@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "41089378103",
+    "firebase_url": "https://battlejournal-bb8af.firebaseio.com",
+    "project_id": "battlejournal-bb8af",
+    "storage_bucket": "battlejournal-bb8af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41089378103:android:d762950ff9de3b6c",
+        "android_client_info": {
+          "package_name": "com.battlejournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41089378103-q4ct189ut6bjcelj8ajahobgrjksad91.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.battlejournal",
+            "certificate_hash": "0734049189b6f8076e83f2bb01e3842d1ffdc7ae"
+          }
+        },
+        {
+          "client_id": "41089378103-7qfh01c0k1hk8s9a6bd4h64pp7ia3u4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_uy4DTsdsjVmu1wQ6BS0W_2qRKHLi5HQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41089378103-7qfh01c0k1hk8s9a6bd4h64pp7ia3u4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
