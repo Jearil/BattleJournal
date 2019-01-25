@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "41089378103-jvueg07ceceba3lpoiri3h1a2h3t8r46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.battlejournal",
+            "certificate_hash": "75ef7255daf0792d3c5b484e0c3948b6dcec1361"
+          }
+        },
+        {
           "client_id": "41089378103-7qfh01c0k1hk8s9a6bd4h64pp7ia3u4j.apps.googleusercontent.com",
           "client_type": 3
         }

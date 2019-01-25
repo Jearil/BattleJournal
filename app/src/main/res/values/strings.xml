@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">BattleJournal</string>
+    <string name="facebook_application_id">1178379798989148</string>
+    <string name="facebook_app_id">1178379798989148</string>
+    <string name="fb_login_protocol_scheme">fb1178379798989148</string>
+    <string name="logout">Logout</string>
 
     <!-- login/logout stuff -->
     <string name="was_loggedout">You are no longer logged in</string>
