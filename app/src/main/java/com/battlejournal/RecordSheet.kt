@@ -1,6 +1,7 @@
 package com.battlejournal
 
 import android.os.Bundle
+import com.battlejournal.ui.recordsheet.ArmyFragment
 import com.battlejournal.ui.recordsheet.RecordSheetFragment
 
 class RecordSheet : BaseAuthActivity() {
@@ -10,7 +11,7 @@ class RecordSheet : BaseAuthActivity() {
         setContentView(R.layout.record_sheet_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, RecordSheetFragment.newInstance())
+                .replace(R.id.container, ArmyFragment.newInstance())
                 .commitNow()
         }
     }

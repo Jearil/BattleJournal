@@ -8,9 +8,13 @@ import com.google.firebase.auth.FirebaseAuth
 
 abstract class BaseAuthActivity : AppCompatActivity() {
 
+    lateinit var uid : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (FirebaseAuth.getInstance().currentUser != null) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            uid = currentUser.uid
             FirebaseAuth.getInstance().addAuthStateListener { auth ->
                 if (auth.currentUser == null) {
                     // not signed in

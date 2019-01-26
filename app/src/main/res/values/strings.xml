@@ -7,4 +7,5 @@
 
     <!-- login/logout stuff -->
     <string name="was_loggedout">You are no longer logged in</string>
+    <string name="armies">Armies</string>
 </resources>

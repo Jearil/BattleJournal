@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.battlejournal.R
+import com.battlejournal.RecordSheet
 
 class RecordSheetFragment : Fragment() {
 
@@ -20,11 +21,12 @@ class RecordSheetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.record_sheet_fragment, container, false)
+        return inflater.inflate(R.layout.army_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(RecordSheetViewModel::class.java)
         // TODO: Use the ViewModel
     }

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     val RC_SIGN_IN = 0
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
                     .setAvailableProviders(providers)
                     .build(), RC_SIGN_IN
             )
+        } else {
+            loginDone()
         }
     }
 
@@ -50,12 +53,18 @@ class MainActivity : AppCompatActivity() {
             // val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                //val user = FirebaseAuth.getInstance().currentUser
-                // do the thing
-                Toast.makeText(this, "Sign-in worked", Toast.LENGTH_SHORT).show()
+                loginDone()
+
             } else {
                 Toast.makeText(this, "Sign-in failed", Toast.LENGTH_SHORT).show()
+                showLogin()
             }
         }
+    }
+
+    private fun loginDone() {
+        val recordSheet = Intent(this, RecordSheet::class.java)
+        startActivity(recordSheet)
+        finish()
     }
 }
