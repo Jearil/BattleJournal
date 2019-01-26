@@ -23,6 +23,7 @@ class AllArmyViewModel(uid : String) : ViewModel() {
     class AllArmyViewModelFactory(val uid : String) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AllArmyViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
                 return AllArmyViewModel(uid) as T
             }
             throw IllegalArgumentException("Unknown viewmodel class")
