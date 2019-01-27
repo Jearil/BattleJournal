@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK) {
             // val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Sign-in failed", Toast.LENGTH_SHORT).show()
                 showLogin()
             }
+        } else {
+            finish()
         }
     }
 

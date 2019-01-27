@@ -39,6 +39,30 @@
           }
         },
         {
+          "client_id": "41089378103-ol46n8otmqm8tq3aqpupuh4r8p8hnmr8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.battlejournal",
+            "certificate_hash": "675f11639428808d6fb388d23d109c1a3430e70e"
+          }
+        },
+        {
+          "client_id": "41089378103-c8t54rkh1t80dvadjioq892fv4j32dk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.battlejournal",
+            "certificate_hash": "4035dac47c0ba0d8e655a854e36ef46502843040"
+          }
+        },
+        {
+          "client_id": "41089378103-r4o7vn37okegumeoc67msgptvgpfj8qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.battlejournal",
+            "certificate_hash": "34f9c52702a959a9ea615e5b4b991a6646c6ae78"
+          }
+        },
+        {
           "client_id": "41089378103-7qfh01c0k1hk8s9a6bd4h64pp7ia3u4j.apps.googleusercontent.com",
           "client_type": 3
         }
