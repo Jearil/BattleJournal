@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loginDone() {
-        val recordSheet = Intent(this, RecordSheet::class.java)
+        val recordSheet = Intent(this, ArmyActivity::class.java)
         startActivity(recordSheet)
         finish()
     }

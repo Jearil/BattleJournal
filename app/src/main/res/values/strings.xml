@@ -6,8 +6,14 @@
     <string name="facebook_app_id" tools:keep="@string/facebook_app_id">1178379798989148</string>
     <string name="fb_login_protocol_scheme" tools:keep="@string/fb_login_protocol_scheme">fb1178379798989148</string>
     <string name="logout">Logout</string>
+    <string name="save">Save</string>
 
     <!-- login/logout stuff -->
     <string name="was_loggedout">You are no longer logged in</string>
     <string name="armies">Armies</string>
+
+    <!-- Army Edit -->
+    <string name="add_army">Add An Army</string>
+    <string name="army_name">Army Name</string>
+    <string name="select_faction">Select a faction</string>
 </resources>

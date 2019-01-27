@@ -7,7 +7,7 @@
         android:id="@+id/recordsheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.recordsheet.RecordSheetFragment">
+    tools:context=".ui.ArmyFragment">
 
     <TextView
             android:id="@+id/message"

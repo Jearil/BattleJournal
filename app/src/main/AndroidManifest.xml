@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/book_launcher_round"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RecordSheet">
+        <activity android:name=".ArmyActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

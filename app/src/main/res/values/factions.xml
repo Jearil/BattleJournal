@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (c) Colin Miller 2019. -->
+
+<resources>
+    <string-array name="factions">
+        <item>Beastclaw Raiders</item>
+        <item>Beastmen</item>
+        <item>Daughters of Khaine</item>
+        <item>Iron Jawz</item>
+        <item>Stormcast Eternals</item>
+    </string-array>
+</resources>
