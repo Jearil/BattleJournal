@@ -1,3 +1,5 @@
+// Copyright (c) Colin Miller 2019.
+
 package com.battlejournal.adapter
 
 import android.support.v7.util.DiffUtil
@@ -39,7 +41,7 @@ class ArmyAdapter(var data : List<Army> = ArrayList()) : RecyclerView.Adapter<Ar
     fun setArmies(newData : List<Army>) {
         val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return data[oldItemPosition] == newData[newItemPosition]
+                return data[oldItemPosition] === newData[newItemPosition]
             }
 
             override fun getOldListSize(): Int {
@@ -51,7 +53,7 @@ class ArmyAdapter(var data : List<Army> = ArrayList()) : RecyclerView.Adapter<Ar
             }
 
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return data[oldItemPosition].equals(newData[newItemPosition])
+                return data[oldItemPosition] == newData[newItemPosition]
             }
         })
 

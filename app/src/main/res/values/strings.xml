@@ -1,8 +1,10 @@
-<resources>
+<!-- Copyright (c) Colin Miller 2019. -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BattleJournal</string>
     <string name="facebook_application_id">1178379798989148</string>
-    <string name="facebook_app_id">1178379798989148</string>
-    <string name="fb_login_protocol_scheme">fb1178379798989148</string>
+    <string name="facebook_app_id" tools:keep="@string/facebook_app_id">1178379798989148</string>
+    <string name="fb_login_protocol_scheme" tools:keep="@string/fb_login_protocol_scheme">fb1178379798989148</string>
     <string name="logout">Logout</string>
 
     <!-- login/logout stuff -->

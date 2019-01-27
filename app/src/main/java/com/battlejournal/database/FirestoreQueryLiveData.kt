@@ -1,10 +1,12 @@
+// Copyright (c) Colin Miller 2019.
+
 package com.battlejournal.database
 
 import android.arch.lifecycle.LiveData
 import android.util.Log
 import com.google.firebase.firestore.*
 
-class FirestoreQueryLiveData(val collectionReference: CollectionReference) : LiveData<QuerySnapshot>() {
+class FirestoreQueryLiveData(private val collectionReference: CollectionReference) : LiveData<QuerySnapshot>() {
     private val listener = FirestoreValueEventListener()
     private var registration : ListenerRegistration? = null
 
@@ -23,10 +25,10 @@ class FirestoreQueryLiveData(val collectionReference: CollectionReference) : Liv
                 return
             }
 
-            if (snapshot != null && !snapshot.isEmpty) {
-                value = snapshot
+            value = if (snapshot != null && !snapshot.isEmpty) {
+                snapshot
             } else {
-                value = null
+                null
             }
         }
 

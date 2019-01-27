@@ -1,11 +1,13 @@
+// Copyright (c) Colin Miller 2019.
+
 package com.battlejournal.database
 
 import android.arch.lifecycle.LiveData
 import android.util.Log
 import com.google.firebase.firestore.*
 
-class FirestoreDocumentLiveData(val documentReference: DocumentReference) : LiveData<DocumentSnapshot>() {
-    val listener = LiveDocumentEventListener()
+class FirestoreDocumentLiveData(private val documentReference: DocumentReference) : LiveData<DocumentSnapshot>() {
+    private val listener = LiveDocumentEventListener()
     private var registration : ListenerRegistration? = null
 
     override fun onInactive() {
@@ -23,10 +25,10 @@ class FirestoreDocumentLiveData(val documentReference: DocumentReference) : Live
                 return
             }
 
-            if (snapshot != null && snapshot.exists()) {
-                value = snapshot
+            value = if (snapshot != null && snapshot.exists()) {
+                snapshot
             } else {
-                value = null
+                null
             }
         }
 

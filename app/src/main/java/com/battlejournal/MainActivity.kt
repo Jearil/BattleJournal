@@ -1,3 +1,5 @@
+// Copyright (c) Colin Miller 2019.
+
 package com.battlejournal
 
 import android.app.Activity
@@ -8,10 +10,9 @@ import android.widget.Button
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
-    val RC_SIGN_IN = 0
+    private val RC_SIGN_IN = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

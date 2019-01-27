@@ -1,3 +1,5 @@
+// Copyright (c) Colin Miller 2019.
+
 package com.battlejournal.ui.recordsheet
 
 import android.arch.lifecycle.ViewModelProviders
@@ -7,28 +9,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.battlejournal.R
-import com.battlejournal.RecordSheet
 
 class RecordSheetFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RecordSheetFragment()
-    }
+  companion object {
+    fun newInstance() = RecordSheetFragment()
+  }
 
-    private lateinit var viewModel: RecordSheetViewModel
+  private lateinit var viewModel: RecordSheetViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.army_fragment, container, false)
-    }
+  override fun onCreateView(
+    inflater: LayoutInflater, container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    return inflater.inflate(R.layout.army_fragment, container, false)
+  }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(RecordSheetViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    viewModel = ViewModelProviders.of(this).get(RecordSheetViewModel::class.java)
+    // TODO: Use the ViewModel
+  }
 
 }
