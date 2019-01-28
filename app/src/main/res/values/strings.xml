@@ -16,4 +16,8 @@
     <string name="add_army">Add An Army</string>
     <string name="army_name">Army Name</string>
     <string name="select_faction">Select a faction</string>
+    <string name="delete">Delete</string>
+    <string name="delete_success">%1$s deleted successfully</string>
+    <string name="delete_failure">Oddly, I couldn\'t delete this army</string>
+    <string name="alliance">Alliance Goes Here</string>
 </resources>

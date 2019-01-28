@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
 import com.battlejournal.adapter.ArmyAdapter
@@ -26,7 +27,12 @@ class ArmyFragment : Fragment() {
   }
 
   private lateinit var viewModel: AllArmyViewModel
-  private var adapter = ArmyAdapter()
+  private var adapter = ArmyAdapter(object : ArmyAdapter.ArmyItemClicked {
+    override fun onItemClicked(army: Army) {
+      val action = ArmyFragmentDirections.actionArmyFragmentToArmyEditFragment(army.id)
+      findNavController().navigate(action)
+    }
+  })
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +46,7 @@ class ArmyFragment : Fragment() {
 
     addArmyButton.setOnClickListener(
       Navigation.createNavigateOnClickListener(
-        R.id.action_armyFragment_to_armyEditFragment,
+        R.id.action_armyFragment_to_newArmyFragment,
         null
       )
     )
@@ -56,7 +62,7 @@ class ArmyFragment : Fragment() {
     viewModel.getFirestoreSnapshot().observe(this, Observer { dataSnapshot ->
       val armies = ArrayList<Army>()
       dataSnapshot?.documents?.forEach { doc ->
-        val army = doc.toObject(Army::class.java)
+        val army = doc.toObject(Army::class.java)?.withId<Army>(doc.id)
         army?.let { armies.add(army) }
       }
       adapter.setArmies(armies)

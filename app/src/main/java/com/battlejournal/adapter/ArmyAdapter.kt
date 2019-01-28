@@ -11,7 +11,12 @@ import android.widget.TextView
 import com.battlejournal.R
 import com.battlejournal.models.Army
 
-class ArmyAdapter(var data: List<Army> = ArrayList()) : RecyclerView.Adapter<ArmyAdapter.ArmyViewHolder>() {
+class ArmyAdapter(val callback: ArmyItemClicked, var data: List<Army> = ArrayList()) :
+  RecyclerView.Adapter<ArmyAdapter.ArmyViewHolder>() {
+
+  interface ArmyItemClicked {
+    fun onItemClicked(army: Army)
+  }
 
   class ArmyViewHolder(card: CardView) : RecyclerView.ViewHolder(card) {
     val name: TextView = card.findViewById(R.id.army_name)
@@ -32,6 +37,9 @@ class ArmyAdapter(var data: List<Army> = ArrayList()) : RecyclerView.Adapter<Arm
   override fun onBindViewHolder(holder: ArmyViewHolder, position: Int) {
     holder.name.text = data[position].name
     holder.winlosstie.text = "W:0 L:0 T:0"
+    holder.itemView.setOnClickListener {
+      callback.onItemClicked(data[position])
+    }
   }
 
   override fun getItemViewType(position: Int): Int {
