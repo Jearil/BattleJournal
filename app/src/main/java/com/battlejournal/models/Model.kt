@@ -6,6 +6,8 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 @IgnoreExtraProperties
 open class Model {
   @Exclude
+  @set:Exclude
+  @get:Exclude
   lateinit var id: String
 
   open fun <T : Model?> withId(id: String): T {

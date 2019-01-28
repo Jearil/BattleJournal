@@ -14,8 +14,8 @@ android {
         applicationId "com.battlejournal"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 4
-        versionName "0.0.4 Pre-Alpha"
+        versionCode 6
+        versionName "0.0.6 Pre-Alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

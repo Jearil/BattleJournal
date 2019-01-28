@@ -2,7 +2,10 @@
 
 package com.battlejournal.models
 
-data class Army(
+import com.google.firebase.firestore.IgnoreExtraProperties
+
+@IgnoreExtraProperties
+class Army(
   val name: String = "",
   val faction: String = ""
 ) : Model()
