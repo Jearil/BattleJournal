@@ -9,24 +9,24 @@ import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 
 class FirebaseQueryLiveData(private val query: Query) : LiveData<DataSnapshot>() {
-    private val listener = LiveValueEventListener()
+  private val listener = LiveValueEventListener()
 
-    override fun onInactive() {
-        query.removeEventListener(listener)
+  override fun onInactive() {
+    query.removeEventListener(listener)
+  }
+
+  override fun onActive() {
+    query.addValueEventListener(listener)
+  }
+
+  inner class LiveValueEventListener : ValueEventListener {
+    override fun onCancelled(error: DatabaseError) {
+      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onActive() {
-        query.addValueEventListener(listener)
+    override fun onDataChange(data: DataSnapshot) {
+      value = data
     }
 
-    inner class LiveValueEventListener : ValueEventListener {
-        override fun onCancelled(error: DatabaseError) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
-        override fun onDataChange(data: DataSnapshot) {
-            value = data
-        }
-
-    }
+  }
 }

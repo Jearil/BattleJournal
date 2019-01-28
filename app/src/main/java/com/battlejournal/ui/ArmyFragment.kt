@@ -40,7 +40,7 @@ class ArmyFragment : Fragment() {
 
     addArmyButton.setOnClickListener(
       Navigation.createNavigateOnClickListener(
-        R.id.action_recordSheetFragment_to_armyEditFragment,
+        R.id.action_armyFragment_to_armyEditFragment,
         null
       )
     )
@@ -57,7 +57,7 @@ class ArmyFragment : Fragment() {
       val armies = ArrayList<Army>()
       dataSnapshot?.documents?.forEach { doc ->
         val army = doc.toObject(Army::class.java)
-        army?.let {armies.add(army)}
+        army?.let { armies.add(army) }
       }
       adapter.setArmies(armies)
     })

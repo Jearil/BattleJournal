@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recordSheetFragment">
+    app:startDestination="@id/armyFragment">
 
     <fragment
-        android:id="@+id/recordSheetFragment"
+        android:id="@+id/armyFragment"
         android:name="com.battlejournal.ui.ArmyFragment"
         android:label="army_fragment"
         tools:layout="@layout/army_fragment">
         <action
-            android:id="@+id/action_recordSheetFragment_to_armyEditFragment"
+            android:id="@+id/action_armyFragment_to_armyEditFragment"
             app:destination="@id/armyEditFragment"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left" />
