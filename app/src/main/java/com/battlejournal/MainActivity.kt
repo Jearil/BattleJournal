@@ -5,15 +5,15 @@ package com.battlejournal
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.battlejournal.models.User
 import com.crashlytics.android.Crashlytics
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class MainActivity : AppCompatActivity() {
   private val RC_SIGN_IN = 0
@@ -75,7 +75,8 @@ class MainActivity : AppCompatActivity() {
     if (auth != null) {
       val db = FirebaseFirestore.getInstance().collection("users").document(auth.uid)
       val user = User(auth.displayName, auth.email, auth.photoUrl.toString())
-      db.set(user)
+
+      db.set(user, SetOptions.merge())
         .addOnCompleteListener {
           val recordSheet = Intent(this, ArmyActivity::class.java)
           startActivity(recordSheet)

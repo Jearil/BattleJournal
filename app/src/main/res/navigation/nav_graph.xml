@@ -35,5 +35,14 @@
         <argument
             android:name="armyId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_armyEditFragment_to_placeholder"
+            app:destination="@id/gameRecordFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left" />
     </fragment>
+    <fragment
+        android:id="@+id/gameRecordFragment"
+        android:name="com.battlejournal.ui.GameRecordFragment"
+        tools:layout="@layout/game_record_fragment" />
 </navigation>

@@ -9,11 +9,12 @@ import com.battlejournal.database.FirestoreQueryLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 
-class AllArmyViewModel(uid: String) : ViewModel() {
+class RecordViewModel(uid: String, army: Army) : ViewModel() {
 
   private val firestoreDb = FirebaseFirestore.getInstance()
     .collection("users").document(uid)
-    .collection("armies")
+    .collection("armies").document(army.id)
+    .collection("games")
 
   private val liveData = FirestoreQueryLiveData(firestoreDb)
 
@@ -21,11 +22,11 @@ class AllArmyViewModel(uid: String) : ViewModel() {
     return liveData
   }
 
-  class AllArmyViewModelFactory(private val uid: String) : ViewModelProvider.Factory {
+  class AllArmyViewModelFactory(private val uid: String, private val army: Army) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-      if (modelClass.isAssignableFrom(AllArmyViewModel::class.java)) {
+      if (modelClass.isAssignableFrom(RecordViewModel::class.java)) {
         @Suppress("UNCHECKED_CAST")
-        return AllArmyViewModel(uid) as T
+        return RecordViewModel(uid, army) as T
       }
       throw IllegalArgumentException("Unknown viewmodel class")
     }

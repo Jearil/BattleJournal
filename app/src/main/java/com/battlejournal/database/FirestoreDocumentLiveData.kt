@@ -2,8 +2,8 @@
 
 package com.battlejournal.database
 
-import android.arch.lifecycle.LiveData
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.*
 
 class FirestoreDocumentLiveData(private val documentReference: DocumentReference) : LiveData<DocumentSnapshot>() {

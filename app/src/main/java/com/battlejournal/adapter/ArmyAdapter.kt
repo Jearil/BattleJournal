@@ -2,12 +2,11 @@
 
 package com.battlejournal.adapter
 
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.CardView
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.battlejournal.R
 import com.battlejournal.models.Army
 
@@ -18,14 +17,14 @@ class ArmyAdapter(val callback: ArmyItemClicked, var data: List<Army> = ArrayLis
     fun onItemClicked(army: Army)
   }
 
-  class ArmyViewHolder(card: CardView) : RecyclerView.ViewHolder(card) {
+  class ArmyViewHolder(card: androidx.cardview.widget.CardView) : RecyclerView.ViewHolder(card) {
     val name: TextView = card.findViewById(R.id.army_name)
     val winlosstie: TextView = card.findViewById(R.id.winlosstie)
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArmyViewHolder {
     val armyCard = LayoutInflater.from(parent.context)
-      .inflate(R.layout.army_card, parent, false) as CardView
+      .inflate(R.layout.army_card, parent, false) as androidx.cardview.widget.CardView
 
     return ArmyViewHolder(armyCard)
   }

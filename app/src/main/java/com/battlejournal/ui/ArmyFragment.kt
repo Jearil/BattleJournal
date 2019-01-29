@@ -2,23 +2,23 @@
 
 package com.battlejournal.ui
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
 import com.battlejournal.adapter.ArmyAdapter
 import com.battlejournal.models.AllArmyViewModel
 import com.battlejournal.models.Army
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ArmyFragment : Fragment() {
 

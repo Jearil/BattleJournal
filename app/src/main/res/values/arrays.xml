@@ -8,4 +8,17 @@
         <item>Iron Jawz</item>
         <item>Stormcast Eternals</item>
     </string-array>
+
+    <string-array name="results">
+        <item>Major Win</item>
+        <item>Minor Win</item>
+        <item>Loss</item>
+        <item>Tie</item>
+    </string-array>
+
+    <string-array name="gameTypes">
+        <item>Matched Play</item>
+        <item>Narrative Play</item>
+        <item>Open Play</item>
+    </string-array>
 </resources>

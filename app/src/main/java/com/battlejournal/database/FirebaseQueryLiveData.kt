@@ -2,7 +2,7 @@
 
 package com.battlejournal.database
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query

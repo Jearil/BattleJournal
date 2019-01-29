@@ -20,4 +20,13 @@
     <string name="delete_success">%1$s deleted successfully</string>
     <string name="delete_failure">Oddly, I couldn\'t delete this army</string>
     <string name="alliance">Alliance Goes Here</string>
+    <string name="Opponent">Opponent</string>
+    <string name="opponent_faction">Opponent\'s Faction</string>
+    <string name="game_result">Game Result</string>
+    <string name="match_type">Match Type</string>
+    <string name="game_date">Game Date</string>
+    <string name="formatted_date">%1$d/%2$d/%3$d</string>
+    <string name="my_points">My Points</string>
+    <string name="opponents_points">Opponents Points</string>
+    <string name="notes">Notes</string>
 </resources>
