@@ -6,10 +6,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import com.battlejournal.models.User
+import com.crashlytics.android.Crashlytics
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
   private val RC_SIGN_IN = 0
@@ -67,8 +71,20 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun loginDone() {
-    val recordSheet = Intent(this, ArmyActivity::class.java)
-    startActivity(recordSheet)
-    finish()
+    val auth = FirebaseAuth.getInstance().currentUser
+    if (auth != null) {
+      val db = FirebaseFirestore.getInstance().collection("users").document(auth.uid)
+      val user = User(auth.displayName, auth.email, auth.photoUrl.toString())
+      db.set(user)
+        .addOnCompleteListener {
+          val recordSheet = Intent(this, ArmyActivity::class.java)
+          startActivity(recordSheet)
+          finish()
+        }
+        .addOnFailureListener {
+          Toast.makeText(this, "Saving user failed", Toast.LENGTH_SHORT).show()
+          Crashlytics.logException(it)
+        }
+    }
   }
 }
