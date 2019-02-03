@@ -2,6 +2,7 @@
 
 package com.battlejournal.models
 
+import com.battlejournal.ui.viewmodels.AllArmyViewModel
 import com.google.common.truth.Truth.assertThat
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference

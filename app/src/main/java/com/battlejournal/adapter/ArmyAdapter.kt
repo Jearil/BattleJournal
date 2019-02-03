@@ -18,7 +18,7 @@ class ArmyAdapter(val callback: ArmyItemClicked, var data: List<Army> = ArrayLis
   }
 
   class ArmyViewHolder(card: androidx.cardview.widget.CardView) : RecyclerView.ViewHolder(card) {
-    val name: TextView = card.findViewById(R.id.army_name)
+    val name: TextView = card.findViewById(R.id.armyName)
     val winlosstie: TextView = card.findViewById(R.id.winlosstie)
   }
 

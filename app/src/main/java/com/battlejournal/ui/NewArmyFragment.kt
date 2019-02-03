@@ -8,13 +8,15 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
 import com.battlejournal.models.Army
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.new_army_fragment.*
 
 class NewArmyFragment : Fragment() {
 
@@ -28,31 +30,28 @@ class NewArmyFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val save = view.findViewById<Button>(R.id.save_army)
-    val faction = view.findViewById<Spinner>(R.id.faction_spinner)
-    val name = view.findViewById<EditText>(R.id.army_name)
     var factionValue: String? = null
     var itemSelected = false
-    faction.onItemSelectedListener = object : OnItemSelectedListener {
+    factionSpinner.onItemSelectedListener = object : OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {
-        save.isEnabled = false
+        saveArmy.isEnabled = false
         itemSelected = false
       }
 
       override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        save.isEnabled = !name.text.isBlank()
+        saveArmy.isEnabled = !armyName.text.isBlank()
         itemSelected = true
         val factionView = view as TextView
         factionValue = factionView.text.toString()
       }
     }
 
-    name.addTextChangedListener(object : TextWatcher {
+    armyName.addTextChangedListener(object : TextWatcher {
       override fun afterTextChanged(s: Editable?) {
         if (s.toString().isBlank()) {
-          save.isEnabled = false
+          saveArmy.isEnabled = false
         } else if (itemSelected) {
-          save.isEnabled = true
+          saveArmy.isEnabled = true
         }
       }
 
@@ -61,7 +60,7 @@ class NewArmyFragment : Fragment() {
       override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     })
 
-    save.setOnClickListener {
+    saveArmy.setOnClickListener {
       val db = FirebaseFirestore.getInstance()
       val parentActivity = activity as ArmyActivity
       val uid = parentActivity.uid
@@ -70,7 +69,7 @@ class NewArmyFragment : Fragment() {
       if (factionText == null) {
         return@setOnClickListener
       }
-      val armyEntry = Army(name.text.toString(), factionText)
+      val armyEntry = Army(armyName.text.toString(), factionText)
       armies.add(armyEntry)
       parentActivity.onBackPressed()
     }

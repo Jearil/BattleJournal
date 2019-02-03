@@ -1,11 +1,12 @@
 // Copyright (c) Colin Miller 2019.
 
-package com.battlejournal.models
+package com.battlejournal.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.battlejournal.database.FirestoreQueryLiveData
+import com.battlejournal.models.Army
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 

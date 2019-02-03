@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
 import com.battlejournal.adapter.ArmyAdapter
-import com.battlejournal.models.AllArmyViewModel
 import com.battlejournal.models.Army
+import com.battlejournal.ui.viewmodels.AllArmyViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ArmyFragment : Fragment() {

@@ -1,6 +1,6 @@
 // Copyright (c) Colin Miller 2019.
 
-package com.battlejournal.ui
+package com.battlejournal.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
