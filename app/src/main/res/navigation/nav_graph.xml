@@ -44,5 +44,5 @@
     <fragment
         android:id="@+id/gameRecordFragment"
         android:name="com.battlejournal.ui.GameRecordFragment"
-        tools:layout="@layout/game_record_fragment" />
+        tools:layout="@layout/game_record" />
 </navigation>

@@ -2,8 +2,31 @@
 
 package com.battlejournal.ui.viewmodels
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import com.battlejournal.models.Record
+import java.util.*
 
-class GameRecordViewModel : ViewModel() {
-  // TODO: Implement the ViewModel
+class GameRecordViewModel(
+  var record: Record,
+  val opponentEdit: ObservableField<String> = ObservableField(record.opponent),
+  val opponentFaction: ObservableField<String> = ObservableField(record.opponentFaction),
+  val datePlayed: ObservableField<Date> = ObservableField(record.datePlayed),
+  val result: ObservableField<String> = ObservableField(record.result),
+  val gameStyle: ObservableField<String> = ObservableField(record.gameStyle),
+  val myPoints: ObservableField<Int> = ObservableField(record.myPoints),
+  val opponentPoints: ObservableField<Int> = ObservableField(record.opponentsPoints),
+  val notes: ObservableField<String> = ObservableField(record.notes)
+) : ViewModel() {
+  fun updateRecord(record: Record) {
+    this.record = record
+    opponentEdit.set(record.opponent)
+    opponentFaction.set(record.opponentFaction)
+    datePlayed.set(record.datePlayed)
+    result.set(record.result)
+    notes.set(record.notes)
+    gameStyle.set(record.gameStyle)
+    myPoints.set(record.myPoints)
+    opponentPoints.set(record.opponentsPoints)
+  }
 }

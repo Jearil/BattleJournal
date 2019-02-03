@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.battlejournal.R
 import com.battlejournal.ui.viewmodels.GameRecordViewModel
-import kotlinx.android.synthetic.main.game_record_fragment.*
+import kotlinx.android.synthetic.main.game_record.*
 import java.util.*
 
 class GameRecordFragment : Fragment() {
@@ -26,7 +26,7 @@ class GameRecordFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    return inflater.inflate(R.layout.game_record_fragment, container, false)
+    return inflater.inflate(R.layout.game_record, container, false)
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,4 +52,9 @@ class GameRecordFragment : Fragment() {
     }
   }
 
+  fun getSaveClickListener(): View.OnClickListener {
+    return View.OnClickListener {
+
+    }
+  }
 }
