@@ -7,5 +7,6 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 @IgnoreExtraProperties
 class Army(
   val name: String = "",
-  val faction: String = ""
+  val allianceId: String = "",
+  val factionId: String = ""
 ) : Model()

@@ -56,6 +56,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.6'
     implementation 'com.google.firebase:firebase-firestore:18.0.0'
 
+    // FirebaseUI for Cloud Firestore
+    implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
+
     implementation 'com.google.android.gms:play-services-flags:16.0.1'
 
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'

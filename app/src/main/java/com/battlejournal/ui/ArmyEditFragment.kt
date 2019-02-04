@@ -60,7 +60,6 @@ class ArmyEditFragment : Fragment() {
       val army = dataSnapshot.toObject(Army::class.java)?.withId<Army>(dataSnapshot.id)
 
       armyName.text = army?.name
-      faction.text = army?.faction
 
       army?.let {
         val factory = RecordViewModel.AllArmyViewModelFactory(uid, army)

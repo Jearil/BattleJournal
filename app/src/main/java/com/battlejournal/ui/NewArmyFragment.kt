@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
+import com.battlejournal.adapter.AllianceSpinnerAdapter
 import com.battlejournal.models.Army
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.new_army_fragment.*
@@ -32,6 +33,22 @@ class NewArmyFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     var factionValue: String? = null
     var itemSelected = false
+    var allianceId: String? = null
+    val allianceAdapater = AllianceSpinnerAdapter()
+    allianceAdapater.startListening()
+    allianceSpinner.adapter = allianceAdapater
+
+    allianceSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+      override fun onNothingSelected(parent: AdapterView<*>?) {
+
+      }
+
+      override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val allianceView = view as TextView
+        allianceId = allianceView.text.toString()
+      }
+    }
+
     factionSpinner.onItemSelectedListener = object : OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {
         saveArmy.isEnabled = false
@@ -66,10 +83,14 @@ class NewArmyFragment : Fragment() {
       val uid = parentActivity.uid
       val armies = db.collection("users").document(uid).collection("armies")
       val factionText = factionValue
+      val allianceText = allianceId
       if (factionText == null) {
         return@setOnClickListener
       }
-      val armyEntry = Army(armyName.text.toString(), factionText)
+      if (allianceText == null) {
+        return@setOnClickListener
+      }
+      val armyEntry = Army(armyName.text.toString(), allianceText, factionText)
       armies.add(armyEntry)
       parentActivity.onBackPressed()
     }

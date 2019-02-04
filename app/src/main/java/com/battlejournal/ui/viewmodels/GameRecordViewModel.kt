@@ -8,7 +8,7 @@ import com.battlejournal.models.Record
 import java.util.*
 
 class GameRecordViewModel(
-  var record: Record,
+  var record: Record = Record(),
   val opponentEdit: ObservableField<String> = ObservableField(record.opponent),
   val opponentFaction: ObservableField<String> = ObservableField(record.opponentFaction),
   val datePlayed: ObservableField<Date> = ObservableField(record.datePlayed),
@@ -18,6 +18,7 @@ class GameRecordViewModel(
   val opponentPoints: ObservableField<Int> = ObservableField(record.opponentsPoints),
   val notes: ObservableField<String> = ObservableField(record.notes)
 ) : ViewModel() {
+
   fun updateRecord(record: Record) {
     this.record = record
     opponentEdit.set(record.opponent)
@@ -28,5 +29,20 @@ class GameRecordViewModel(
     gameStyle.set(record.gameStyle)
     myPoints.set(record.myPoints)
     opponentPoints.set(record.opponentsPoints)
+  }
+
+  fun updateRecord(): Record {
+    this.record = Record(
+      opponentEdit.get()!!,
+      opponentFaction.get()!!,
+      datePlayed.get()!!,
+      result.get()!!,
+      notes.get()!!,
+      gameStyle.get()!!,
+      myPoints.get()!!,
+      opponentPoints.get()!!
+    )
+
+    return record
   }
 }
