@@ -14,7 +14,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
-import com.battlejournal.adapter.AllianceSpinnerAdapter
 import com.battlejournal.models.Army
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.new_army_fragment.*
@@ -34,9 +33,8 @@ class NewArmyFragment : Fragment() {
     var factionValue: String? = null
     var itemSelected = false
     var allianceId: String? = null
-    val allianceAdapater = AllianceSpinnerAdapter()
-    allianceAdapater.startListening()
-    allianceSpinner.adapter = allianceAdapater
+//    lifecycle.addObserver(allianceAdapater)
+//    allianceSpinner.adapter = allianceAdapater
 
     allianceSpinner.onItemSelectedListener = object : OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {

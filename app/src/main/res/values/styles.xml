@@ -16,4 +16,8 @@
         <item name="android:paddingRight">@dimen/input_label_horizontal_spacing</item>
     </style>
 
+    <style name="SaveButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:colorButtonNormal">@color/colorPrimaryDark</item>
+    </style>
 </resources>

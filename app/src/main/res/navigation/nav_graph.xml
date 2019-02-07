@@ -12,21 +12,11 @@
         android:label="army_fragment"
         tools:layout="@layout/army_fragment">
         <action
-            android:id="@+id/action_armyFragment_to_newArmyFragment"
-            app:destination="@id/newArmyFragment"
-            app:enterAnim="@anim/fui_slide_in_right"
-            app:exitAnim="@anim/fui_slide_out_left" />
-        <action
             android:id="@+id/action_armyFragment_to_armyEditFragment"
             app:destination="@id/armyEditFragment"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left" />
     </fragment>
-    <fragment
-        android:id="@+id/newArmyFragment"
-        android:name="com.battlejournal.ui.NewArmyFragment"
-        android:label="fragment_army_edit"
-        tools:layout="@layout/new_army_fragment" />
     <fragment
         android:id="@+id/armyEditFragment"
         android:name="com.battlejournal.ui.ArmyEditFragment"
@@ -34,6 +24,7 @@
         tools:layout="@layout/army_edit_fragment">
         <argument
             android:name="armyId"
+            app:nullable="true"
             app:argType="string" />
         <action
             android:id="@+id/action_armyEditFragment_to_placeholder"

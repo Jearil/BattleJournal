@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,12 +43,10 @@ class ArmyFragment : Fragment() {
     recyclerView.adapter = adapter
     recyclerView.layoutManager = LinearLayoutManager(context)
 
-    addArmyButton.setOnClickListener(
-      Navigation.createNavigateOnClickListener(
-        R.id.action_armyFragment_to_newArmyFragment,
-        null
-      )
-    )
+    addArmyButton.setOnClickListener {
+      val action = ArmyFragmentDirections.actionArmyFragmentToArmyEditFragment(null)
+      findNavController().navigate(action)
+    }
     return view
   }
 

@@ -6,21 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
 import com.battlejournal.adapter.RecordAdapter
-import com.battlejournal.models.Army
-import com.battlejournal.models.Record
-import com.battlejournal.ui.viewmodels.ArmyEditViewModel
+import com.battlejournal.controller.ArmyController
+import com.battlejournal.ui.viewmodels.ArmyViewModel
 import com.battlejournal.ui.viewmodels.RecordViewModel
-import com.crashlytics.android.Crashlytics
 import kotlinx.android.synthetic.main.army_edit_fragment.*
 
 class ArmyEditFragment : Fragment() {
@@ -30,7 +24,8 @@ class ArmyEditFragment : Fragment() {
   }
 
   private lateinit var recordViewModel: RecordViewModel
-  private lateinit var viewModel: ArmyEditViewModel
+  private lateinit var viewModel: ArmyViewModel
+  private lateinit var controller: ArmyController
 
   private var adapter = RecordAdapter()
 
@@ -47,8 +42,22 @@ class ArmyEditFragment : Fragment() {
     super.onActivityCreated(savedInstanceState)
     val parentActivity = activity as ArmyActivity
     val uid = parentActivity.uid
-    val factory = ArmyEditViewModel.ArmyEditViewModelFactory(uid, args.armyId)
-    viewModel = ViewModelProviders.of(this, factory).get(ArmyEditViewModel::class.java)
+    val factory = ArmyViewModel.ArmyEditViewModelFactory(uid)
+    viewModel = ViewModelProviders.of(this, factory).get(ArmyViewModel::class.java)
+    viewModel.start(args.armyId)
+    controller = ArmyController(
+      viewModel,
+      this,
+      allianceSpinner,
+      factionSpinner2,
+      armyNameEdit,
+      delete,
+      save,
+      recordsRecyclerView,
+      addGameRecordButton
+    )
+
+    /*
     recordsRecyclerView.adapter = adapter
     recordsRecyclerView.layoutManager = LinearLayoutManager(context)
     alliance.setText(R.string.alliance)
@@ -59,7 +68,7 @@ class ArmyEditFragment : Fragment() {
       }
       val army = dataSnapshot.toObject(Army::class.java)?.withId<Army>(dataSnapshot.id)
 
-      armyName.text = army?.name
+      armyNameEdit.setText(army?.name)
 
       army?.let {
         val factory = RecordViewModel.AllArmyViewModelFactory(uid, army)
@@ -81,7 +90,7 @@ class ArmyEditFragment : Fragment() {
 
     delete.setOnClickListener {
       //TODO: Add a modal to ask if they're sure
-      val deleteString = getString(R.string.delete_success, armyName.text.toString())
+      val deleteString = getString(R.string.delete_success, armyNameEdit.text.toString())
       viewModel.delete()
         .addOnSuccessListener {
           Toast.makeText(context, deleteString, Toast.LENGTH_SHORT).show()
@@ -92,6 +101,7 @@ class ArmyEditFragment : Fragment() {
           Crashlytics.logException(ex)
         }
     }
+    */
   }
 
 }
