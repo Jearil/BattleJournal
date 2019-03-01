@@ -38,6 +38,7 @@ class GameRecordFragment : Fragment() {
     super.onActivityCreated(savedInstanceState)
     viewModel = ViewModelProviders.of(this).get(GameRecordViewModel::class.java)
     binding.viewModel = viewModel
+    allianceFactionSlider.setupAllianceSpinner(this)
 
     val now = Calendar.getInstance()
     now.time = viewModel.datePlayed.get()
