@@ -16,6 +16,9 @@
             app:destination="@id/armyEditFragment"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left" />
+        <action
+            android:id="@+id/action_armyFragment_to_newArmyFragment"
+            app:destination="@id/newArmyFragment" />
     </fragment>
     <fragment
         android:id="@+id/armyEditFragment"
@@ -36,4 +39,8 @@
         android:id="@+id/gameRecordFragment"
         android:name="com.battlejournal.ui.GameRecordFragment"
         tools:layout="@layout/game_record" />
+    <fragment
+        android:id="@+id/newArmyFragment"
+        android:name="com.battlejournal.ui.NewArmyFragment"
+        android:label="NewArmyFragment" />
 </navigation>

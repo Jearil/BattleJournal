@@ -44,8 +44,7 @@ class ArmyFragment : Fragment() {
     recyclerView.layoutManager = LinearLayoutManager(context)
 
     addArmyButton.setOnClickListener {
-      val action = ArmyFragmentDirections.actionArmyFragmentToArmyEditFragment(null)
-      findNavController().navigate(action)
+      findNavController().navigate(R.id.action_armyFragment_to_newArmyFragment)
     }
     return view
   }

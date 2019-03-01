@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.battlejournal.ArmyActivity
 import com.battlejournal.R
@@ -30,49 +29,28 @@ class NewArmyFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    var factionValue: String? = null
-    var itemSelected = false
-    var allianceId: String? = null
-//    lifecycle.addObserver(allianceAdapater)
-//    allianceSpinner.adapter = allianceAdapater
 
-    allianceSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+    allianceFaction.setupAllianceSpinner(this)
+    val selectorListener = object : OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {
-
+        verifySaveButton()
       }
 
       override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val allianceView = view as TextView
-        allianceId = allianceView.text.toString()
+        verifySaveButton()
       }
     }
-
-    factionSpinner.onItemSelectedListener = object : OnItemSelectedListener {
-      override fun onNothingSelected(parent: AdapterView<*>?) {
-        saveArmy.isEnabled = false
-        itemSelected = false
-      }
-
-      override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        saveArmy.isEnabled = !armyName.text.isBlank()
-        itemSelected = true
-        val factionView = view as TextView
-        factionValue = factionView.text.toString()
-      }
-    }
+    allianceFaction.allianceSelector = selectorListener
+    allianceFaction.factionSelector = selectorListener
 
     armyName.addTextChangedListener(object : TextWatcher {
-      override fun afterTextChanged(s: Editable?) {
-        if (s.toString().isBlank()) {
-          saveArmy.isEnabled = false
-        } else if (itemSelected) {
-          saveArmy.isEnabled = true
-        }
-      }
-
       override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
       override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+      override fun afterTextChanged(s: Editable?) {
+        verifySaveButton()
+      }
     })
 
     saveArmy.setOnClickListener {
@@ -80,8 +58,8 @@ class NewArmyFragment : Fragment() {
       val parentActivity = activity as ArmyActivity
       val uid = parentActivity.uid
       val armies = db.collection("users").document(uid).collection("armies")
-      val factionText = factionValue
-      val allianceText = allianceId
+      val factionText = allianceFaction.currentFaction?.name
+      val allianceText = allianceFaction.currentAlliance?.name
       if (factionText == null) {
         return@setOnClickListener
       }
@@ -92,6 +70,10 @@ class NewArmyFragment : Fragment() {
       armies.add(armyEntry)
       parentActivity.onBackPressed()
     }
+  }
+
+  private fun verifySaveButton() {
+    saveArmy.isEnabled = allianceFaction.isFilledOut() && !armyName.text.toString().isBlank()
   }
 
   companion object {
