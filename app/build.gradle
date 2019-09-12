@@ -10,11 +10,11 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.battlejournal"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 6
         versionName "0.0.6 Pre-Alpha"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -35,31 +35,32 @@ android {
     dataBinding {
         enabled = true
     }
+    buildToolsVersion = '29.0.2'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.browser:browser:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha02'
-    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha04'
+    implementation 'com.google.firebase:firebase-auth:19.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-core:16.0.7'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    implementation 'com.google.firebase:firebase-core:17.2.0'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
     // material datetime picker
     implementation 'com.wdullaer:materialdatetimepicker:4.1.1'
 
     // Database access. Both Realtime and Firestore
-    implementation 'com.google.firebase:firebase-database:16.1.0'
-    implementation 'com.google.firebase:firebase-firestore:18.1.0'
+    implementation 'com.google.firebase:firebase-database:19.1.0'
+    implementation 'com.google.firebase:firebase-firestore:21.1.0'
 
     // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
 
-    implementation 'com.google.android.gms:play-services-flags:16.0.1'
+    implementation 'com.google.android.gms:play-services-flags:17.0.0'
 
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
 
@@ -69,22 +70,22 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
 
-    def nav_version = "1.0.0-rc02"
+    def nav_version = "1.0.0"
 
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
 
     // Testing
     testImplementation 'junit:junit:4.12'
-    testImplementation 'androidx.test:core:1.1.0'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    testImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'org.mockito:mockito-core:2.23.4'
     testImplementation 'org.powermock:powermock-module-junit4:2.0.0'
     testImplementation 'org.powermock:powermock-api-mockito2:2.0.0'
 
     // Assertions
-    testImplementation 'androidx.test.ext:junit:1.1.0'
-    testImplementation 'androidx.test.ext:truth:1.1.0'
+    testImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'androidx.test.ext:truth:1.2.0'
     testImplementation 'com.google.truth:truth:0.42'
 }

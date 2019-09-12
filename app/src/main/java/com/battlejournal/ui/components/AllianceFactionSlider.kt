@@ -44,19 +44,23 @@ class AllianceFactionSlider : FrameLayout {
 
   private var factionAdapter: TextSpinnerAdapter<Faction>? = null
 
-  constructor(context: Context?) : super(context) {
+  constructor(context: Context) : super(context) {
     initializeView(context)
   }
 
-  constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+  constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
     initializeView(context)
   }
 
-  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+  constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+    context,
+    attrs,
+    defStyleAttr
+  ) {
     initializeView(context)
   }
 
-  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
+  constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
     context,
     attrs,
     defStyleAttr,
@@ -65,11 +69,7 @@ class AllianceFactionSlider : FrameLayout {
     initializeView(context)
   }
 
-  private fun initializeView(context: Context?) {
-    if (context == null) {
-      throw IllegalStateException("can't be done with a null context")
-    }
-
+  private fun initializeView(context: Context) {
     val inflator = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     inflator.inflate(R.layout.alliance_faction_component, this)
   }

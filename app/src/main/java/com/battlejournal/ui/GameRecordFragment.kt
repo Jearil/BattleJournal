@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.battlejournal.R
 import com.battlejournal.databinding.GameRecordBinding
 import com.battlejournal.ui.viewmodels.GameRecordViewModel
@@ -36,29 +36,35 @@ class GameRecordFragment : Fragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(GameRecordViewModel::class.java)
+    viewModel = ViewModelProvider(this).get(GameRecordViewModel::class.java)
     binding.viewModel = viewModel
     allianceFactionSlider.setupAllianceSpinner(this)
 
     val now = Calendar.getInstance()
-    now.time = viewModel.datePlayed.get()
+    val datePlayed = viewModel.datePlayed.get()
+    if (datePlayed != null) {
+      now.time = datePlayed
+    }
     val month = now.get(Calendar.MONTH)
     val day = now.get(Calendar.DAY_OF_MONTH)
     val year = now.get(Calendar.YEAR)
     gameDateText.setText(getString(R.string.formatted_date, month + 1, day, year))
     gameDateText.setOnClickListener {
-      val dialog = DatePickerDialog(
-        context,
-        DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-          val date = Calendar.getInstance()
-          date.set(year, month, dayOfMonth)
-          viewModel.datePlayed.set(date.time)
-        },
-        year,
-        month,
-        day
-      )
-      dialog.show()
+      val currentContext = context
+      if (currentContext != null) {
+        val dialog = DatePickerDialog(
+          currentContext,
+          DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            val date = Calendar.getInstance()
+            date.set(year, month, dayOfMonth)
+            viewModel.datePlayed.set(date.time)
+          },
+          year,
+          month,
+          day
+        )
+        dialog.show()
+      }
     }
   }
 
